@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace ReservationSystem.Models
+namespace ReservationSystem.DTV
 {
-    public class Room
+    public class RoomDTV
     {
-        [Key]
         public int ID { get; set; }
+        public string IDEncrypted { get; set; }
         public int TypeID { get; set; }
         public int Floor { get; set; }
         public string Name { get; set; }
-        public DateTime? FreeFrom { get; set; }
-
-        public virtual ICollection<Reservation> Reservation { set; get; }
     }
 }

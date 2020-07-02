@@ -18,7 +18,7 @@ namespace ReservationSystem
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<RRSContext>());
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<RRSContext>());
         }
     }
 }

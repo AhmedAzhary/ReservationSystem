@@ -10,7 +10,7 @@ namespace ReservationSystem.Models
     {
         public RRSContext() :base("name=ReservationSystem")
         {
-            Database.SetInitializer(new ReservationDBIntializer<RRSContext>());
+            //Database.SetInitializer(new ReservationDBIntializer<RRSContext>());
         }
         public IDbSet<Room> Rooms { set; get; }
         public IDbSet<Reservation> Reservations { set; get; }

@@ -128,10 +128,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RoomController.cs" />
+    <Compile Include="DTV\RoomDTV.cs" />
+    <Compile Include="DTV\RoomFilter.cs" />
     <Compile Include="enums.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logic\RoomLogic.cs" />
     <Compile Include="Migrations\202007021153187_first.cs" />
     <Compile Include="Migrations\202007021153187_first.designer.cs">
       <DependentUpon>202007021153187_first.cs</DependentUpon>
@@ -152,10 +156,13 @@
     <Compile Include="Migrations\202007021555362_initial.designer.cs">
       <DependentUpon>202007021555362_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007022207183_upgrade_room.cs" />
+    <Compile Include="Migrations\202007022207183_upgrade_room.designer.cs">
+      <DependentUpon>202007022207183_upgrade_room.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\Reservation.cs" />
-    <Compile Include="Models\ReservationDBIntializer.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\RRSContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -196,6 +203,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Room\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -228,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007021555362_initial.resx">
       <DependentUpon>202007021555362_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007022207183_upgrade_room.resx">
+      <DependentUpon>202007022207183_upgrade_room.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

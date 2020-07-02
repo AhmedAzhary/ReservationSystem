@@ -86,3 +86,4 @@ C:\Users\AHMED\source\repos\ReservationSystem\ReservationSystem\obj\Debug\Reserv
 C:\Users\AHMED\source\repos\ReservationSystem\ReservationSystem\obj\Debug\ReservationSystem.Migrations.Models.resources
 C:\Users\AHMED\source\repos\ReservationSystem\ReservationSystem\obj\Debug\ReservationSystem.Migrations.Seeding.resources
 C:\Users\AHMED\source\repos\ReservationSystem\ReservationSystem\obj\Debug\ReservationSystem.Migrations.initial.resources
+C:\Users\AHMED\source\repos\ReservationSystem\ReservationSystem\obj\Debug\ReservationSystem.Migrations.upgrade_room.resources
