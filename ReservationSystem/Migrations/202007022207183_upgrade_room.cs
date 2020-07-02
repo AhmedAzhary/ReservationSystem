@@ -7,12 +7,12 @@
     {
         public override void Up()
         {
-            AlterColumn("dbo.Rooms", "FreeFrom", c => c.DateTime());
+            AddColumn("dbo.Rooms", "FreeFrom", c => c.DateTime());
         }
         
         public override void Down()
         {
-            AlterColumn("dbo.Rooms", "FreeFrom", c => c.DateTime(nullable: false));
+            AddColumn("dbo.Rooms", "FreeFrom", c => c.DateTime(nullable: false));
         }
     }
 }
