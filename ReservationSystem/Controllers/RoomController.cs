@@ -23,7 +23,7 @@ namespace ReservationSystem.Controllers
         // GET: Room/Details/5
         public ActionResult Reserve(string id)
         {
-            return View();
+            return View(new DateTime());
         }
 
         [HttpGet]
@@ -57,6 +57,7 @@ namespace ReservationSystem.Controllers
                     Value = "4"
                 },
             };
+            
         }
 
         private string ConvertViewToString(string viewName, object model)

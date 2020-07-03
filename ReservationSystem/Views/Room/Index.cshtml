@@ -1,7 +1,18 @@
 ﻿@model List<ReservationSystem.DTV.RoomDTV>
 @{
-    ViewBag.Title = "Rooms";
+    ViewBag.Title = "الغرف";
 }
+
+@*<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link href="~/Content/jquery.datetimepicker.css" rel="stylesheet" />
+<script>
+    $(document).ready(function () {
+        $("#EnterDate").datepicker();
+    });
+</script>*@
+
 
 <div class="row" style="margin-top: 20px;">
     <div class="col-md-4">
@@ -24,6 +35,13 @@
             </div>
             <hr />
             <br />
+            متاح من:
+            <div class="col-md-12">
+                @Html.TextBox("AvilableFrom", String.Format("{0:d}", new DateTime().ToShortDateString()),
+      new { @class = "datefield", type = "date" })
+            </div>
+            <hr />
+            <br />
             <div class="col-md-12">
                 <button id="filter" type="button" class="btn btn-default">ابحث</button>
 
@@ -43,16 +61,17 @@
         var data = {
             Floor: $('#Floor').val(),
             Type: $('#RoomTypes').val(),
-            Name: $('#Name').val()
+            Name: $('#Name').val(),
+            AvilableFrom: $('#AvilableFrom').val(),
         }
         $.ajax({
             type: "GET",
             url: '@Url.Action("Filter","Room")',
             data: data,
             dataType: "json",
-            contentType: 'application/json; charset=utf-8', 
+            contentType: 'application/json; charset=utf-8',
             success: function (result) {
-                de
+                
                 $('#listing').html(result.list)
             },
 
