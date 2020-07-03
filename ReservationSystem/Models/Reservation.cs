@@ -14,17 +14,15 @@ namespace ReservationSystem.Models
         public string Reason { get; set; }
         [ForeignKey("Room")]
         public int RoomID { get; set; }
-        [ForeignKey("Patient")]
-        public int PatientID { get; set; }
+        [ForeignKey("Client")]
+        public int ClientID { get; set; }
         public string ArrivingFrom { get; set; }
-        public string DoctorName { get; set; }
-        public int PatientRoomNumber { get; set; }
         public float Cash { get; set; }
         public DateTime ArrivalDate { get; set; }
         public DateTime DepartureDate { get; set; }
 
         public virtual Room Room { set; get; }
-        public virtual Patient Patient { set; get; }
+        public virtual Client Client { set; get; }
 
     }
 }

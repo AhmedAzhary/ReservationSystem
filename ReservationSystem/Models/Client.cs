@@ -7,7 +7,7 @@ using System.Web;
 
 namespace ReservationSystem.Models
 {
-    public class Patient
+    public class Client
     {
         [Key]
         public int ID { get; set; }
@@ -15,11 +15,15 @@ namespace ReservationSystem.Models
         public string Name { get; set; }
         public string PassPortNumber { get; set; }
         public int NationalID  { get; set; }
-        public string HomeAdress { get; set; }
+        public string HomeAddress { get; set; }
         public string EmployerName { get; set; }
         public DateTime BirthDate { get; set; }
         public int PostalCode { get; set; }
         public int PhoneNumber { get; set; }
+        public string DoctorName { get; set; }
+        public int PatientRoomNumber { get; set; }
+        public int PatientName { get; set; }
+        public int NationalityID { get; set; }
 
     }
 }

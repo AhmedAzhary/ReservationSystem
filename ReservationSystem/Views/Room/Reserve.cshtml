@@ -1,0 +1,88 @@
+﻿@model ReservationSystem.DTV.ReservationWrapperDTV
+@{
+    ViewBag.Title = "الحجوزات";
+}
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="margin-top:15px;">
+    اضف حجز جديد
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" dir="rtl">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">حجز الغرفة</h3>
+                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>*@
+            </div>
+            @using (Ajax.BeginForm("AddReserve", "Room", new AjaxOptions
+            {
+                OnSuccess = "addPostback"
+            }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <div class="row">
+                        @Html.Label("الاسم :")
+                        @Html.TextBoxFor(m => m.Name)
+                        <hr />
+                        @Html.Label("الرقم القومى فى حالة ان كان مصرياً :")
+                        @Html.TextBoxFor(m => m.NationalID)
+                        <hr />
+                        @Html.Label("رقم الباسبور :")
+                        @Html.TextBoxFor(m => m.PassPortNumber)
+                        <hr />
+                        @Html.Label("العنوان :")
+                        @Html.TextBoxFor(m => m.HomeAdress)
+                        <hr />
+                        @Html.Label("الوظيفة/المهنة :")
+                        @Html.TextBoxFor(m => m.JobTitle)
+                        <hr />
+                        @Html.Label("الجنسية :")
+                        @Html.DropDownListFor(m=>m.Nationality,(List<SelectListItem>)ViewBag.Nationality,"اختر الجنسية")
+                        <hr />
+                        @Html.Label("تاريخ الميلاد :")
+                        @Html.TextBoxFor(m => m.BirthDate, String.Format("{0:d}", new DateTime().ToShortDateString()),
+                        new { @class = "datefield", type = "date" })
+                        <hr />
+                        @Html.Label("الرقم البريدى :")
+                        @Html.TextBoxFor(m => m.PostalCode)
+                        <hr />
+                        @Html.Label("رقم التيليفون :")
+                        @Html.TextBoxFor(m => m.PhoneNumber)
+                        <hr />
+                        @Html.Label("اسم جهة العمل :")
+                        @Html.TextBoxFor(m => m.EmployerName)
+                        <hr />
+                        @Html.Label("اسم الطبيب المعالج :")
+                        @Html.TextBoxFor(m => m.DoctorName)
+                        <hr />
+                        @Html.Label("تاريخ الوصول :")
+                        @Html.TextBoxFor(m => m.ArrivalDate, String.Format("{0:d}", new DateTime().ToShortDateString()),
+                        new { @class = "datefield", type = "date" })
+                        <hr />
+                        @Html.Label("تاريخ المغادرة :")
+                        @Html.TextBoxFor(m => m.DepartureDate, String.Format("{0:d}", new DateTime().ToShortDateString()),
+                        new { @class = "datefield", type = "date" })
+                        <hr />
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+<hr />
+
+<div>
+    @Html.Partial("~/Views/Room/_reservationListing.cshtml", Model.Reservations)
+</div>

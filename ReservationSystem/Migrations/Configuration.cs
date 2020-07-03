@@ -13,13 +13,16 @@
             AutomaticMigrationsEnabled = false;
         }
 
+        
         protected override void Seed(ReservationSystem.Models.RRSContext context)
         {
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
-
+            var roomsCount = context.Rooms.ToList().Count;
+            if (roomsCount == 0)
+            {
             context.Rooms.AddOrUpdate(new Room()
             {
                 ID = 301,
@@ -280,7 +283,8 @@
                 Floor = 4,
                 Name = "415 B",
                 TypeID = 1
-            }); context.Rooms.AddOrUpdate(new Room()
+            });
+            context.Rooms.AddOrUpdate(new Room()
             {
                 ID = 416,
                 Floor = 4,
@@ -329,6 +333,7 @@
                 Name = "422 B",
                 TypeID = 1
             });
+            }
         }
     }
 }
