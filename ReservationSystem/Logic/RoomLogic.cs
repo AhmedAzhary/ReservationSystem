@@ -53,7 +53,7 @@ namespace ReservationSystem.Logic
                     res.DepartureDate,
                     res.Cash,
                     res.Client.Name,
-                    IdOrPassPort = (res.Client.NationalID == 0)? res.Client.PassPortNumber : res.Client.NationalID.ToString()
+                    IdOrPassPort = res.Client.NationalID_PassPortNumber
                 });
             foreach (var reservation in query)
             {

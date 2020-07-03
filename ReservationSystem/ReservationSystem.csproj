@@ -166,6 +166,10 @@
     <Compile Include="Migrations\202007031622531_EditDataBase.designer.cs">
       <DependentUpon>202007031622531_EditDataBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007032303169_Edit_nationalIDandPassport.cs" />
+    <Compile Include="Migrations\202007032303169_Edit_nationalIDandPassport.designer.cs">
+      <DependentUpon>202007032303169_Edit_nationalIDandPassport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DateTimeModel.cs" />
     <Compile Include="Models\Client.cs" />
@@ -289,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007031622531_EditDataBase.resx">
       <DependentUpon>202007031622531_EditDataBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007032303169_Edit_nationalIDandPassport.resx">
+      <DependentUpon>202007032303169_Edit_nationalIDandPassport.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

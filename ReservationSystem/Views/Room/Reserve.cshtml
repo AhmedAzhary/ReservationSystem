@@ -2,7 +2,10 @@
 @{
     ViewBag.Title = "الحجوزات";
 }
-
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/custom-validator")
+}
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="margin-top:15px;">
     اضف حجز جديد
@@ -25,55 +28,68 @@
             {
                 @Html.AntiForgeryToken()
                 <div class="modal-body">
-                    <div class="row">
-                        @Html.Label("الاسم :")
-                        @Html.TextBoxFor(m => m.Name)
+                    <div class="row" style="margin-right:10px;">
+                        @Html.Label("الاسم الرباعى :")
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger  " })
                         <hr />
-                        @Html.Label("الرقم القومى فى حالة ان كان مصرياً :")
-                        @Html.TextBoxFor(m => m.NationalID)
-                        <hr />
-                        @Html.Label("رقم الباسبور :")
-                        @Html.TextBoxFor(m => m.PassPortNumber)
+                        @Html.Label("الرقم القومى/ جواز السفر :")
+                        @Html.TextBoxFor(m => m.NationalID_PassPortNumber, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.NationalID_PassPortNumber, "", new { @class = "text-danger  " })
                         <hr />
                         @Html.Label("العنوان :")
-                        @Html.TextBoxFor(m => m.HomeAdress)
+                        @Html.TextBoxFor(m => m.HomeAdress, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.HomeAdress, "", new { @class = "text-danger  " })
                         <hr />
                         @Html.Label("الوظيفة/المهنة :")
-                        @Html.TextBoxFor(m => m.JobTitle)
+                        @Html.TextBoxFor(m => m.JobTitle, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.JobTitle, "", new { @class = "text-danger  " })
+                        <hr />
+                        @Html.Label("اسم جهة العمل :")
+                        @Html.TextBoxFor(m => m.EmployerName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.EmployerName, "", new { @class = "text-danger  " })
                         <hr />
                         @Html.Label("الجنسية :")
-                        @Html.DropDownListFor(m=>m.Nationality,(List<SelectListItem>)ViewBag.Nationality,"اختر الجنسية")
+                        @Html.DropDownListFor(m => m.Nationality, (List<SelectListItem>)ViewBag.Nationality, "اختر الجنسية", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Nationality, "", new { @class = "text-danger  " })
                         <hr />
                         @Html.Label("تاريخ الميلاد :")
                         @Html.TextBoxFor(m => m.BirthDate, String.Format("{0:d}", new DateTime().ToShortDateString()),
-                        new { @class = "datefield", type = "date" })
+                        new { @class = "datefield form-control", type = "date" })
+                        @Html.ValidationMessageFor(m => m.BirthDate, "", new { @class = "text-danger  " })
                         <hr />
                         @Html.Label("الرقم البريدى :")
-                        @Html.TextBoxFor(m => m.PostalCode)
+                        @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PostalCode, "", new { @class = "text-danger  " })
                         <hr />
                         @Html.Label("رقم التيليفون :")
-                        @Html.TextBoxFor(m => m.PhoneNumber)
+                        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger  " })
                         <hr />
-                        @Html.Label("اسم جهة العمل :")
-                        @Html.TextBoxFor(m => m.EmployerName)
+                        @Html.Label("الجهة القادم منها :")
+                        @Html.TextBoxFor(m => m.ArrivingFrom, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.ArrivingFrom, "", new { @class = "text-danger  " })
                         <hr />
                         @Html.Label("اسم الطبيب المعالج :")
-                        @Html.TextBoxFor(m => m.DoctorName)
+                        @Html.TextBoxFor(m => m.DoctorName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger  " })
                         <hr />
                         @Html.Label("تاريخ الوصول :")
                         @Html.TextBoxFor(m => m.ArrivalDate, String.Format("{0:d}", new DateTime().ToShortDateString()),
-                        new { @class = "datefield", type = "date" })
+                        new { @class = "datefield form-control", type = "date" })
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger  " })
                         <hr />
                         @Html.Label("تاريخ المغادرة :")
                         @Html.TextBoxFor(m => m.DepartureDate, String.Format("{0:d}", new DateTime().ToShortDateString()),
-                        new { @class = "datefield", type = "date" })
+                        new { @class = "datefield form-control", type = "date" })
+                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger  " })
                         <hr />
                     </div>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                    <button type="submit" class="btn btn-primary">حفظ الحجز</button>
                 </div>
             }
         </div>
@@ -86,3 +102,4 @@
 <div>
     @Html.Partial("~/Views/Room/_reservationListing.cshtml", Model.Reservations)
 </div>
+
