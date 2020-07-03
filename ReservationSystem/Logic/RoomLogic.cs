@@ -42,7 +42,7 @@ namespace ReservationSystem.Logic
             
 
             if (!String.IsNullOrEmpty(filter.Name))
-                query = query.Where(r => r.Name == filter.Name);
+                query = query.Where(r => r.Name.Contains(filter.Name));
 
 
             if (filter.Floor.HasValue)
