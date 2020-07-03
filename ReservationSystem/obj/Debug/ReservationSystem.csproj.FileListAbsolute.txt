@@ -88,3 +88,4 @@ C:\Users\AHMED\source\repos\ReservationSystem\ReservationSystem\obj\Debug\Reserv
 C:\Users\AHMED\source\repos\ReservationSystem\ReservationSystem\obj\Debug\ReservationSystem.Migrations.initial.resources
 C:\Users\AHMED\source\repos\ReservationSystem\ReservationSystem\obj\Debug\ReservationSystem.Migrations.upgrade_room.resources
 C:\Users\AHMED\source\repos\ReservationSystem\ReservationSystem\obj\Debug\ReservationSystem.Migrations.EditDataBase.resources
+C:\Users\AHMED\source\repos\ReservationSystem\ReservationSystem\obj\Debug\ReservationSystem.Migrations.Edit_nationalIDandPassport.resources

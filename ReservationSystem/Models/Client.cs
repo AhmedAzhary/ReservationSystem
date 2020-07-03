@@ -13,8 +13,7 @@ namespace ReservationSystem.Models
         public int ID { get; set; }
         
         public string Name { get; set; }
-        public string PassPortNumber { get; set; }
-        public int NationalID  { get; set; }
+        public string NationalID_PassPortNumber { get; set; }
         public string HomeAddress { get; set; }
         public string EmployerName { get; set; }
         public DateTime BirthDate { get; set; }
@@ -24,6 +23,5 @@ namespace ReservationSystem.Models
         public int PatientRoomNumber { get; set; }
         public int PatientName { get; set; }
         public int NationalityID { get; set; }
-
     }
 }

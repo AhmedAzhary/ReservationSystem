@@ -25,6 +25,11 @@ namespace ReservationSystem
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            // JQuery validator.   
+            bundles.Add(new ScriptBundle("~/bundles/custom-").Include(
+                                  "~/Scripts/script-custom-validator.js"));
+
         }
     }
 }
