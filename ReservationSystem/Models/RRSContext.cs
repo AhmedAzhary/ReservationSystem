@@ -14,6 +14,6 @@ namespace ReservationSystem.Models
         }
         public IDbSet<Room> Rooms { set; get; }
         public IDbSet<Reservation> Reservations { set; get; }
-        public IDbSet<Patient> Patients  { set; get; }
+        public IDbSet<Client> Patients  { set; get; }
     }
 }

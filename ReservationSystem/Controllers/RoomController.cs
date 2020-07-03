@@ -11,6 +11,10 @@ namespace ReservationSystem.Controllers
 {
     public class RoomController : Controller
     {
+        public RoomController()
+        {
+
+        }
         // GET: Room
         public ActionResult Index()
         {
@@ -23,8 +27,16 @@ namespace ReservationSystem.Controllers
         
         public ActionResult Reserve(string id)
         {
-
-            return View(new DateTime());
+            LoadDDL();
+            return View(new RoomLogic().GetReservations(int.Parse(id)));
+        }
+        [HttpPost]
+        public ActionResult AddReserve(ReservationWrapperDTV model)
+        {
+            return Json(new
+            {
+                list = ConvertViewToString("~/Views/Room/_reservationListing.cshtml", model)
+            }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
@@ -42,6 +54,12 @@ namespace ReservationSystem.Controllers
             ViewBag.RoomTypes = Enum.GetValues(typeof(enums.RoomType)).Cast<enums.RoomType>().Select(v => new SelectListItem
             {
                 Text = EnumHelper<enums.RoomType>.GetDisplayValue(v),
+                Value = ((int)v).ToString()
+            }).ToList();
+
+            ViewBag.Nationality = Enum.GetValues(typeof(enums.Nationality)).Cast<enums.Nationality>().Select(v => new SelectListItem
+            {
+                Text = EnumHelper<enums.Nationality>.GetDisplayValue(v),
                 Value = ((int)v).ToString()
             }).ToList();
 
