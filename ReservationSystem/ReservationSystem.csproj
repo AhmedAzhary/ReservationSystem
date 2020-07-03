@@ -129,6 +129,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
+    <Compile Include="DTV\ReservationDTV.cs" />
+    <Compile Include="DTV\ReservationWrapperDTV.cs" />
     <Compile Include="DTV\RoomDTV.cs" />
     <Compile Include="DTV\RoomFilter.cs" />
     <Compile Include="enums.cs" />

@@ -20,9 +20,10 @@ namespace ReservationSystem.Controllers
             return View(rooms);
         }
 
-        // GET: Room/Details/5
+        
         public ActionResult Reserve(string id)
         {
+
             return View(new DateTime());
         }
 

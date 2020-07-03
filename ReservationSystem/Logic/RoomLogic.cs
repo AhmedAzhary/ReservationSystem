@@ -11,9 +11,12 @@ namespace ReservationSystem.Logic
     public class RoomLogic
     {
         IDbSet<Room> _roomRepository;
+        IDbSet<Reservation> _reservationRepository;
         public RoomLogic()
         {
-            _roomRepository = new RRSContext().Rooms;
+            var context = new RRSContext(); 
+            _roomRepository = context.Rooms;
+            _reservationRepository = context.Reservations;
         }
         public List<RoomDTV> GetRoomsByFilter(RoomFilter filter)
         {
@@ -33,6 +36,13 @@ namespace ReservationSystem.Logic
                 });
             }
             return rooms;
+        }
+
+        public ReservationWrapperDTV GetReservations(int roomID)
+        {
+            var result = new ReservationWrapperDTV();
+            var query = _reservationRepository.Where(res => res.RoomID == roomID).OrderByDescending(res => res.DepartureDate);
+            return result;
         }
 
         private IQueryable<Room> ApplyFilters(RoomFilter filter, IQueryable<Room> query)

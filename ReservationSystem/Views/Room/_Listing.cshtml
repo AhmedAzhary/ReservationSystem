@@ -16,7 +16,7 @@
                 <td style="text-align:center;">@item.Name</td>
                 <td style="text-align:center;">@item.Floor</td>
                 <td style="text-align:center;">@(EnumHelper<enums.RoomType>.GetDisplayValue((enums.RoomType)item.TypeID))</td>
-                <td style="text-align:center;"><button type="button" onclick="reserve(@item.ID)" class="btn btn-link">حجز</button></td>
+                <td style="text-align:center;"><a href="/Room/Reserve/@item.ID" class="btn btn-link">حجز</a></td>
             </tr>
         }
     </tbody>
