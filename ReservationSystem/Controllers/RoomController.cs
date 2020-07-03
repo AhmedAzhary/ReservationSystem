@@ -33,6 +33,8 @@ namespace ReservationSystem.Controllers
         [HttpPost]
         public ActionResult AddReserve(ReservationWrapperDTV model)
         {
+            var logic = new RoomLogic();
+            
             return Json(new
             {
                 list = ConvertViewToString("~/Views/Room/_reservationListing.cshtml", model)
@@ -54,7 +56,8 @@ namespace ReservationSystem.Controllers
             ViewBag.RoomTypes = Enum.GetValues(typeof(enums.RoomType)).Cast<enums.RoomType>().Select(v => new SelectListItem
             {
                 Text = EnumHelper<enums.RoomType>.GetDisplayValue(v),
-                Value = ((int)v).ToString()
+                Value = ((int)v).ToString(),
+                
             }).ToList();
 
             ViewBag.Nationality = Enum.GetValues(typeof(enums.Nationality)).Cast<enums.Nationality>().Select(v => new SelectListItem
