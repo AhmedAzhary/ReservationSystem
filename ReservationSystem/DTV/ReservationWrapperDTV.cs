@@ -14,6 +14,8 @@ namespace ReservationSystem.DTV
         [Required(ErrorMessage = "هذا البند مطلوب")]
         public string Name { get; set; }
         [Required(ErrorMessage = "هذا البند مطلوب")]
+        public string PatientName { get; set; }
+        [Required(ErrorMessage = "هذا البند مطلوب")]
         public string NationalID_PassPortNumber { get; set; }
         [Required(ErrorMessage = "هذا البند مطلوب")]
         public string HomeAdress { get; set; }
@@ -24,7 +26,7 @@ namespace ReservationSystem.DTV
         [Required(ErrorMessage = "هذا البند مطلوب")]
         public int? PostalCode { get; set; }
         [Required(ErrorMessage = "هذا البند مطلوب")]
-        public int? PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         [Required(ErrorMessage = "هذا البند مطلوب")]
         public string Reason { get; set; }
         [Required(ErrorMessage = "هذا البند مطلوب")]
@@ -38,7 +40,7 @@ namespace ReservationSystem.DTV
         [Required(ErrorMessage = "هذا البند مطلوب")]
         public string JobTitle { get; set; }
         [Required(ErrorMessage = "هذا البند مطلوب")]
-        public int PatientRoomNumber { get; set; }
+        public string PatientRoomNumber { get; set; }
         [Required(ErrorMessage = "هذا البند مطلوب")]
         public int Nationality { get; set; }
         [Required(ErrorMessage = "هذا البند مطلوب")]

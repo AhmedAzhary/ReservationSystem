@@ -28,16 +28,26 @@ namespace ReservationSystem.Controllers
         public ActionResult Reserve(string id)
         {
             LoadDDL();
+
             return View(new RoomLogic().GetReservations(int.Parse(id)));
         }
         [HttpPost]
         public ActionResult AddReserve(ReservationWrapperDTV model)
         {
             var logic = new RoomLogic();
-            
+            string message = logic.AddReservation(model);
+            if (String.IsNullOrEmpty(message))
+            {
+                return Json(new
+                {
+                    val = true,
+                    list = ConvertViewToString("~/Views/Room/_reservationListing.cshtml", logic.GetReservations(model.RoomID).Reservations)
+                }, JsonRequestBehavior.AllowGet);
+            }
             return Json(new
             {
-                list = ConvertViewToString("~/Views/Room/_reservationListing.cshtml", model)
+                val = false,
+                message = message
             }, JsonRequestBehavior.AllowGet);
         }
 

@@ -6,6 +6,7 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/custom-validator")
 }
+
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="margin-top:15px;">
     اضف حجز جديد
@@ -23,10 +24,13 @@
             </div>
             @using (Ajax.BeginForm("AddReserve", "Room", new AjaxOptions
             {
-                OnSuccess = "addPostback"
+                HttpMethod = "POST",
+                OnSuccess = "addPostback",
+                OnFailure = "addPostback"
             }))
             {
                 @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.RoomID)
                 <div class="modal-body">
                     <div class="row" style="margin-right:10px;">
                         @Html.Label("الاسم الرباعى :")
@@ -72,17 +76,29 @@
                         <hr />
                         @Html.Label("اسم الطبيب المعالج :")
                         @Html.TextBoxFor(m => m.DoctorName, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger  " })
+                        @Html.ValidationMessageFor(m => m.DoctorName, "", new { @class = "text-danger  " })
+                        <hr />
+                        @Html.Label("اسم المريض :")
+                        @Html.TextBoxFor(m => m.PatientName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PatientName, "", new { @class = "text-danger  " })
+                        <hr />
+                        @Html.Label("رقم غرفة المريض :")
+                        @Html.TextBoxFor(m => m.PatientRoomNumber, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.PatientRoomNumber, "", new { @class = "text-danger  " })
+                        <hr />
+                        @Html.Label("السبب :")
+                        @Html.TextAreaFor(m => m.Reason, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Reason, "", new { @class = "text-danger  " })
                         <hr />
                         @Html.Label("تاريخ الوصول :")
                         @Html.TextBoxFor(m => m.ArrivalDate, String.Format("{0:d}", new DateTime().ToShortDateString()),
                         new { @class = "datefield form-control", type = "date" })
-                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger  " })
+                        @Html.ValidationMessageFor(m => m.ArrivalDate, "", new { @class = "text-danger  " })
                         <hr />
                         @Html.Label("تاريخ المغادرة :")
                         @Html.TextBoxFor(m => m.DepartureDate, String.Format("{0:d}", new DateTime().ToShortDateString()),
                         new { @class = "datefield form-control", type = "date" })
-                        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger  " })
+                        @Html.ValidationMessageFor(m => m.DepartureDate, "", new { @class = "text-danger  " })
                         <hr />
                     </div>
                 </div>
@@ -99,7 +115,17 @@
 
 <hr />
 
-<div>
+<div id="listing">
     @Html.Partial("~/Views/Room/_reservationListing.cshtml", Model.Reservations)
 </div>
 
+<script>
+    function addPostback(result) {
+        debugger
+        if (result.val) {
+            location.reload();
+        } else {
+            alert(result.message)
+        }
+    }
+</script>

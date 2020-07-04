@@ -18,10 +18,10 @@ namespace ReservationSystem.Models
         public string EmployerName { get; set; }
         public DateTime BirthDate { get; set; }
         public int PostalCode { get; set; }
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public string DoctorName { get; set; }
-        public int PatientRoomNumber { get; set; }
-        public int PatientName { get; set; }
+        public string PatientRoomNumber { get; set; }
+        public string PatientName { get; set; }
         public int NationalityID { get; set; }
     }
 }
