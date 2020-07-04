@@ -15,19 +15,22 @@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top flo" >
-        <div class="container" >
+        <div class="container">
             <div class="navbar-header" style="float: right;">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("نظام حجز الغرف", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("نظام حجز الغرف", "Index", "Room", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse" style="float: right;">
+            @*<div class="navbar-collapse collapse" style="">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("الغرف", "Index", "Room")</li>
                 </ul>
+            </div>*@
+            <div class="navbar-header" style="float: left;">
+               <img src="~/Content/images/logo.png" style="height: 50px; padding: 5px 0;" />
             </div>
         </div>
     </div>
@@ -35,7 +38,10 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <div style="display:flex; flex-direction: column; align-items: center;">
+                <p style="font-weight: bold;">&copy; @DateTime.Now.Year - Internation Medical Center IMC</p>
+                <p>Hotel Management Department</p>
+            </div>
         </footer>
     </div>
 
