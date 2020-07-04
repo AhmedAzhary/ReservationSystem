@@ -92,6 +92,7 @@ namespace ReservationSystem.Logic
                     PatientName = reservation.PatientName,
                 }
             });
+            room.FreeFrom = reservation.DepartureDate;
             context.SaveChanges();
             return string.Empty;
         }

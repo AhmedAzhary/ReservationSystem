@@ -61,7 +61,7 @@
             <hr />
             <br />
             <p style="padding: 0 15px;">متاح من:</p>
-            <div class="col-md-12"> 
+            <div class="col-md-12">
                 @Html.TextBox("AvilableFrom", String.Format("{0:d}", new DateTime().ToShortDateString()),
       new { @class = "datefield", type = "date" })
             </div>
@@ -69,6 +69,7 @@
             <br />
             <div class="col-md-12" style="display: flex; justify-content: center;">
                 <button id="filter" type="button" class="btn btn-default">ابحث</button>
+                <button id="reset" type="button" class="btn btn-default" style="margin:0 1rem;">ازالة شروط البحث</button>
             </div>
         </div>
     </div>
@@ -79,6 +80,32 @@
 
 <script>
     $('#filter').click(function () {
+        var data = {
+            Floor: $('#Floor').val(),
+            Type: $('#RoomTypes').val(),
+            Name: $('#Name').val(),
+            AvilableFrom: $('#AvilableFrom').val(),
+        }
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("Filter","Room")',
+            data: data,
+            dataType: "json",
+            contentType: 'application/json; charset=utf-8',
+            success: function (result) {
+
+                $('#listing').html(result.list)
+            },
+
+        })
+
+    })
+
+    $('#reset').click(function () {
+        $('#Floor').val('')
+        $('#RoomTypes').val('')
+        $('#Name').val('')
+        $('#AvilableFrom').val('')
         var data = {
             Floor: $('#Floor').val(),
             Type: $('#RoomTypes').val(),
