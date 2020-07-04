@@ -12,9 +12,10 @@ namespace ReservationSystem.Logic
     {
         IDbSet<Room> _roomRepository;
         IDbSet<Reservation> _reservationRepository;
+        RRSContext context;
         public RoomLogic()
         {
-            var context = new RRSContext();
+            context = new RRSContext();
             _roomRepository = context.Rooms;
             _reservationRepository = context.Reservations;
         }
@@ -36,6 +37,63 @@ namespace ReservationSystem.Logic
                 });
             }
             return rooms;
+        }
+
+        public string AddReservation(ReservationWrapperDTV reservation)
+        {
+            var query = _reservationRepository
+                .Where(r => (r.RoomID == reservation.RoomID) & ((r.ArrivalDate >= reservation.ArrivalDate & r.ArrivalDate <= reservation.DepartureDate)
+                | (r.DepartureDate >= reservation.ArrivalDate & r.DepartureDate <= reservation.DepartureDate))).FirstOrDefault();
+            if (query != null)
+                return "هناك حجز يتعارض مع الوقت المطلوب، الرجاء مراجعة الحجوزات ثم المحاولة مرة اخرى";
+
+            if (reservation.DepartureDate <= reservation.ArrivalDate)
+                return "لا يجب ان يكون يوم المغادرة قبل يوم الوصول";
+
+            var room = _roomRepository.Where(r => reservation.RoomID == r.ID).First();
+
+            var totalDays = (reservation.DepartureDate - reservation.ArrivalDate).TotalDays;
+            float cash = 0.0F;
+            if (room.TypeID == (int)enums.RoomType.Single && room.Floor == 3)
+                cash = (float)totalDays * 280;
+            else if (room.TypeID == (int)enums.RoomType.Single && room.Floor == 4)
+                cash = (float)totalDays * 380;
+            else if (room.TypeID == (int)enums.RoomType.Double && room.Floor == 3)
+                cash = (float)totalDays * 450;
+            else if (room.TypeID == (int)enums.RoomType.Double && room.Floor == 4)
+                cash = (float)totalDays * 650;
+            else if (room.TypeID == (int)enums.RoomType.Suite && room.Floor == 3)
+                cash = (float)totalDays * 580;
+            else if (room.TypeID == (int)enums.RoomType.Suite && room.Floor == 4)
+                cash = (float)totalDays * 1050;
+
+            if (reservation.Nationality == (int)enums.Nationality.NonEgyptian)
+                cash = cash * 2;
+            _reservationRepository.Add(new Reservation()
+            {
+                ArrivalDate = reservation.ArrivalDate,
+                ArrivingFrom = reservation.ArrivingFrom,
+                RoomID = reservation.RoomID,
+                DepartureDate = reservation.DepartureDate,
+                Reason = reservation.Reason,
+                Cash = cash,
+                Client = new Client()
+                {
+                    BirthDate = reservation.BirthDate,
+                    DoctorName = reservation.DoctorName,
+                    EmployerName = reservation.EmployerName,
+                    HomeAddress = reservation.EmployerName,
+                    Name = reservation.Name,
+                    NationalID_PassPortNumber = reservation.NationalID_PassPortNumber,
+                    NationalityID = reservation.Nationality,
+                    PhoneNumber = reservation.PhoneNumber,
+                    PostalCode = reservation.PostalCode.Value,
+                    PatientRoomNumber = reservation.PatientRoomNumber,
+                    PatientName = reservation.PatientName,
+                }
+            });
+            context.SaveChanges();
+            return string.Empty;
         }
 
         public ReservationWrapperDTV GetReservations(int roomID)

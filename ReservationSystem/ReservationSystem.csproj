@@ -170,6 +170,14 @@
     <Compile Include="Migrations\202007032303169_Edit_nationalIDandPassport.designer.cs">
       <DependentUpon>202007032303169_Edit_nationalIDandPassport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007040008396_PatientRoom.cs" />
+    <Compile Include="Migrations\202007040008396_PatientRoom.designer.cs">
+      <DependentUpon>202007040008396_PatientRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007040121304_phonenumber.cs" />
+    <Compile Include="Migrations\202007040121304_phonenumber.designer.cs">
+      <DependentUpon>202007040121304_phonenumber.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DateTimeModel.cs" />
     <Compile Include="Models\Client.cs" />
@@ -232,6 +240,8 @@
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
     <Content Include="Scripts\jquery.datetimepicker.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -296,6 +306,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007032303169_Edit_nationalIDandPassport.resx">
       <DependentUpon>202007032303169_Edit_nationalIDandPassport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007040008396_PatientRoom.resx">
+      <DependentUpon>202007040008396_PatientRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007040121304_phonenumber.resx">
+      <DependentUpon>202007040121304_phonenumber.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
