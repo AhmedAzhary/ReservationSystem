@@ -2,6 +2,7 @@
     input, select {
         display: block;
         width: 100%;
+        max-width: 100%;
         height: 34px;
         padding: 6px 12px;
         font-size: 14px;
@@ -39,7 +40,10 @@
 
 
 <div class="row" style="margin-top: 20px;">
-    <div class="col-md-4">
+    <div id="listing" class="col-md-8">
+        @Html.Partial("~/Views/Room/_Listing.cshtml", Model)
+    </div>
+    <div class="col-md-4" style="margin-top: 8px;">
         <div class="row">
             <div class="col-md-12">
                 <input id="Name" type="text" class="form-control" placeholder="ابحث عن">
@@ -56,20 +60,17 @@
             </div>
             <hr />
             <br />
-            متاح من:
-            <div class="col-md-12">
+            <p style="padding: 0 15px;">متاح من:</p>
+            <div class="col-md-12"> 
                 @Html.TextBox("AvilableFrom", String.Format("{0:d}", new DateTime().ToShortDateString()),
       new { @class = "datefield", type = "date" })
             </div>
             <hr />
             <br />
-            <div class="col-md-12">
+            <div class="col-md-12" style="display: flex; justify-content: center;">
                 <button id="filter" type="button" class="btn btn-default">ابحث</button>
             </div>
         </div>
-    </div>
-    <div id="listing" class="col-md-8">
-        @Html.Partial("~/Views/Room/_Listing.cshtml", Model)
     </div>
 </div>
 
