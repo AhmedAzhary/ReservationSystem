@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ReservationSystem.DTV.ReceiptDTV
+
+@{
     ViewBag.Title = "Receipt";
     Layout = null;
 }
@@ -517,11 +519,11 @@
         }
     </style>
 </head>
-<body style="padding: 1rem; color: darkblue; direction: rtl;">
+<body style="padding: 16px; color: darkblue; direction: rtl;">
     <!-- Fixed Postion Logo Image -->
-    <img src="D:\Projects\.NET\ReservationSystem\ReservationSystem\Content\images\logo.png"
+    <img src="~/Content/images/logo.png"
          alt="logo.png"
-         style="max-height: 100px; position: absolute; left: 1rem;" />
+         style="max-height: 100px; position: absolute; left: 16px;" />
 
     <div class="d-flex flex-column align-items-center">
         <span style="font-size: large;">International Medical Center IMC</span>
@@ -537,13 +539,13 @@
         <div class="row justify-content-start">
             <div class="row justify-content-center">
                 <span class="span-ar bordered">رقم الغرفة/الجناح</span>
-                <input id="room-num-1" class="bordered" type="text" style="max-width: 48px;" disabled />
-                <input id="room-num-2" class="bordered" type="text" style="max-width: 48px;" disabled />
+                <input id="room-num-1" class="bordered" type="text" style="max-width: 48px;" value="@Model.RoomNumber" disabled/>
+                <input id="room-num-2" class="bordered" type="text" style="max-width: 48px;" value="@Model.RoomNumber" disabled/>
                 <span class="bordered">Room No.</span>
             </div>
             <div class="row justify-content-center">
                 <span class="span-ar bordered">تاريخ الوصول</span>
-                <input id="arrival-date" class="bordered" type="text" style="max-width: 160px;" disabled />
+                <input id="arrival-date" class="bordered" type="text" style="max-width: 160px;" value="@Model.ArrivalDate.ToShortDateString()" disabled />
                 <span class="bordered" style="padding: 4px 16.8px;">Arrival Date</span>
             </div>
         </div>
@@ -553,13 +555,13 @@
         <div class="row justify-content-start">
             <div class="row justify-content-center">
                 <span class="span-ar bordered" style="padding: 4px 44px;">الدور</span>
-                <input id="floor-num-1" class="bordered" type="text" style="max-width: 48px;" disabled />
-                <input id="floor-num-2" class="bordered" type="text" style="max-width: 48px;" disabled />
+                <input id="floor-num-1" class="bordered" type="text" style="max-width: 48px;" value="@Model.FloorNumber" disabled />
+                <input id="floor-num-2" class="bordered" type="text" style="max-width: 48px;" value="@Model.FloorNumber" disabled />
                 <span class="bordered" style="padding: 4px 6px;">Floor No.</span>
             </div>
             <div class="row justify-content-center">
                 <span class="span-ar bordered">تاريخ المغادرة</span>
-                <input id="departure-date" class="bordered" type="text" style="max-width: 160px;" disabled />
+                <input id="departure-date" class="bordered" type="text" style="max-width: 160px;" value="@Model.DepartureDate.ToShortDateString()" disabled />
                 <span class="bordered">Departure Date</span>
             </div>
         </div>
@@ -570,19 +572,19 @@
     <div class="info-col">
         <div class="row justify-content-between info-row">
             <span class="span-ar col-2">الاسم رباعي</span>
-            <span id="name" class="span-ar dotted col-8">باشمهندس أحمد الأزهري</span>
+            <span id="name" class="span-ar dotted col-8">@Model.Name</span>
             <span class="col-2">Name</span>
         </div>
         <br />
         <div class="row justify-content-between info-row">
             <span class="span-ar col-2">الرقم القومي / جواز السفر</span>
-            <span id="id_passport-num" class="span-ar dotted col-8">30251512</span>
+            <span id="id_passport-num" class="span-ar dotted col-8">@Model.IdOrPassPort</span>
             <span class="col-2">Passport No.</span>
         </div>
         <br />
         <div class="row justify-content-between info-row">
             <span class="span-ar col-2">عنوان السكن</span>
-            <span id="address" class="span-ar dotted col-8">مدينة المستقبل</span>
+            <span id="address" class="span-ar dotted col-8">@Model.Address</span>
             <span class="col-2">Home Address</span>
         </div>
         <br />
@@ -601,23 +603,23 @@
         <div class="row info-row justify-content-between">
             <div class="d-flex col-8">
                 <span class="span-ar col-3">الجنسية</span>
-                <span id="nationality" class="span-ar dotted col-6">للأسف مصري والحمد لله على كل شيء</span>
+                <span id="nationality" class="span-ar dotted col-6">@Model.Nationality</span>
                 <span class="col-3">Nationality</span>
             </div>
             <div class="d-flex" style="width: calc(33.333% - 16px);">
                 <span class="span-ar" style="width: 192px;">سبب التواجد بالفندق</span>
-                <span id="reason" class="span-ar dotted" style="width: 240px;">حكمة ربنا</span>
+                <span id="reason" class="span-ar dotted" style="width: 240px;">@Model.Reason</span>
             </div>
         </div>
         <br />
         <div class="row info-row justify-content-between">
             <div class="d-flex col-8">
                 <span class="span-ar col-3">تاريخ الميلاد</span>
-                <span id="birthdate" class="span-ar dotted col-6">الله أعلم</span>
+                <span id="birthdate" class="span-ar dotted col-6">@Model.BirthDate.ToShortDateString()</span>
                 <span class="col-3">Date of Birth</span>
             </div>
             <div class="d-flex" style="width: calc(33.333% - 16px);">
-                <span class="span-ar" style="width: 256px;">غرفة المريض التابع لها</span>
+                <span class="span-ar" style="width: 240px;">غرفة المريض التابع لها</span>
                 <span id="patient-room" class="span-ar dotted" style="width: 240px;">مافيش</span>
             </div>
         </div>
@@ -625,19 +627,19 @@
         <div class="row info-row justify-content-between">
             <div class="d-flex col-8">
                 <span class="span-ar col-3">الرقم البريدي</span>
-                <span id="postal-code" class="span-ar dotted col-6">201547</span>
+                <span id="postal-code" class="span-ar dotted col-6">@Model.PostCode</span>
                 <span class="col-3">Postal Code</span>
             </div>
             <div class="d-flex" style="width: calc(33.333% - 16px);">
                 <span class="span-ar" style="width: 192px;">اسم الطبيب المعالج</span>
-                <span id="doctor-name" class="span-ar dotted" style="width: 240px;">مافيش</span>
+                <span id="doctor-name" class="span-ar dotted" style="width: 240px;">@Model.DoctorName</span>
             </div>
         </div>
         <br />
         <div class="row info-row justify-content-between">
             <div class="d-flex col-8">
                 <span class="span-ar col-3">رقم التليفون</span>
-                <span id="telephone" class="span-ar dotted col-6">01148631054</span>
+                <span id="telephone" class="span-ar dotted col-6">@Model.PhoneNumber</span>
                 <span class="col-3">Telephone No.</span>
             </div>
         </div>
@@ -645,7 +647,7 @@
         <div class="row info-row justify-content-between">
             <div class="d-flex col-8">
                 <span class="span-ar col-3">الجهة القادم منها</span>
-                <span id="arriving-from" class="span-ar dotted col-6">الله أعلم</span>
+                <span id="arriving-from" class="span-ar dotted col-6">@Model.ArrivingFrom</span>
                 <span class="col-3">Arriving From</span>
             </div>
         </div>
@@ -660,7 +662,7 @@
     <br />
     <div class="row justify-content-between info-row">
         <span class="span-ar col-2">المبلغ المدفوع مقدماً</span>
-        <span id="cash" class="span-ar dotted col-8">25 مليون دولار نقداً</span>
+        <span id="cash" class="span-ar dotted col-8">@Model.Cash</span>
         <span class="col-2">Cash</span>
     </div>
 
@@ -682,12 +684,12 @@
     <div class="row justify-content-between">
         <div class="col-5" dir="rtl" style="text-align: initial;">
             <span class="span-ar">تاريخ اليوم:&nbsp;</span>
-            <span id="date-ar" class="span-ar">04-07-2020</span>
+            <span id="date-ar" class="span-ar">@DateTime.Now</span>
             <!-- <span class="span-ar" style="direction: ltr;">04-07-2020</span> -->
         </div>
         <div class="col-5" dir="ltr">
             <span class="span-ar">Date: </span>
-            <span id="date-en" class="span-ar">04-07-2020</span>
+            <span id="date-en" class="span-ar">@DateTime.Now</span>
         </div>
     </div>
 </body>
